@@ -35,7 +35,9 @@
 
 <body>
 
-<audio autoplay loop>
+<button id="playBtn">Tap to play Raabta 🎶💖</button>
+
+<audio id="bgMusic" loop>
   <source src="raabta.mp3" type="audio/mpeg">
 </audio>
 
@@ -54,7 +56,15 @@ If forever had a feeling, it would feel like us.<br><br>
 <b>Will you be my Valentine — forever and always? 💖</b>
 </p>
 
-<script>
+  <script>
+  const music = document.getElementById("bgMusic");
+  const playBtn = document.getElementById("playBtn");
+
+  playBtn.addEventListener("click", () => {
+    music.play();
+    playBtn.style.display = "none";
+  });
+
   setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
