@@ -54,7 +54,7 @@
 
 <body>
 
-  <button id="playBtn">Tap to play Raabta 🎶💖</button>
+
 
   <audio id="bgMusic" loop>
     <source src="raabta.mp3#t=0,30" type="audio/mpeg">
@@ -78,37 +78,21 @@
   <script>
     const music = document.getElementById("bgMusic");
 
-    // Try to play music if YES was clicked
+    // Try to play music immediately
     window.addEventListener("load", () => {
-      const shouldPlay = sessionStorage.getItem("playMusic");
+      // Attempt play with user interaction fallback
+      const playPromise = music.play();
 
-      if (shouldPlay === "yes") {
-        music.play().catch(() => {
-          // fallback if browser blocks it
-          showPlayButton();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Auto-play was prevented.
+          // Add a one-time click listener to the body as a fallback
+          document.body.addEventListener('click', () => {
+            music.play();
+          }, { once: true });
         });
       }
     });
-
-    function showPlayButton() {
-      const btn = document.createElement("button");
-      btn.innerText = "Tap to play Raabta 🎶💖";
-      btn.style.background = "#ff8fab";
-      btn.style.color = "white";
-      btn.style.border = "none";
-      btn.style.padding = "12px 25px";
-      btn.style.borderRadius = "30px";
-      btn.style.fontSize = "16px";
-      btn.style.cursor = "pointer";
-      btn.style.marginBottom = "20px";
-
-      btn.onclick = () => {
-        music.play();
-        btn.remove();
-      };
-
-      document.body.prepend(btn);
-    }
 
     // Floating hearts ❤️
     setInterval(() => {
