@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Forever Us 💖</title>
   <style>
@@ -7,18 +8,28 @@
       background: linear-gradient(to bottom, #ffe6f0, #fff);
       font-family: 'Segoe UI', sans-serif;
       text-align: center;
-      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      box-sizing: border-box;
       overflow: hidden;
     }
+
     h1 {
       color: #d63384;
     }
+
     p {
       max-width: 600px;
       margin: auto;
       font-size: 18px;
       color: #444;
     }
+
     .heart {
       position: fixed;
       bottom: -10px;
@@ -26,81 +37,90 @@
       font-size: 20px;
       animation: float 6s infinite;
     }
+
     @keyframes float {
-      0% {transform: translateY(0); opacity: 1;}
-      100% {transform: translateY(-100vh); opacity: 0;}
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100vh);
+        opacity: 0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<button id="playBtn">Tap to play Raabta 🎶💖</button>
+  <button id="playBtn">Tap to play Raabta 🎶💖</button>
 
-<audio id="bgMusic" loop>
-  <source src="raabta.mp3#t=0,30" type="audio/mpeg">
-</audio>
+  <audio id="bgMusic" loop>
+    <source src="raabta.mp3#t=0,30" type="audio/mpeg">
+  </audio>
 
-<h1>My Love ❤️</h1>
+  <h1>My Love ❤️</h1>
 
-<p>
-Six years ago, I didn’t know that choosing you would mean choosing home.<br><br>
-Somewhere between our laughter, our silly fights, and quiet moments,
-you became my safest place.<br><br>
+  <p>
+    Six years ago, I didn’t know that choosing you would mean choosing home.<br><br>
+    Somewhere between our laughter, our silly fights, and quiet moments,
+    you became my safest place.<br><br>
 
-Gachudi, with you love feels soft, playful, happy and warm.
-Even on ordinary days, you make life feel special.<br><br>
+    Gachudi, with you love feels soft, playful, happy and warm.
+    Even on ordinary days, you make life feel special.<br><br>
 
-If forever had a feeling, it would feel like us.<br><br>
+    If forever had a feeling, it would feel like us.<br><br>
 
-<b>Will you be my Valentine — forever and always? 💖</b>
-</p>
+    <b>Will you be my Valentine — forever and always? 💖</b>
+  </p>
 
   <script>
-  const music = document.getElementById("bgMusic");
+    const music = document.getElementById("bgMusic");
 
-  // Try to play music if YES was clicked
-  window.addEventListener("load", () => {
-    const shouldPlay = sessionStorage.getItem("playMusic");
+    // Try to play music if YES was clicked
+    window.addEventListener("load", () => {
+      const shouldPlay = sessionStorage.getItem("playMusic");
 
-    if (shouldPlay === "yes") {
-      music.play().catch(() => {
-        // fallback if browser blocks it
-        showPlayButton();
-      });
+      if (shouldPlay === "yes") {
+        music.play().catch(() => {
+          // fallback if browser blocks it
+          showPlayButton();
+        });
+      }
+    });
+
+    function showPlayButton() {
+      const btn = document.createElement("button");
+      btn.innerText = "Tap to play Raabta 🎶💖";
+      btn.style.background = "#ff8fab";
+      btn.style.color = "white";
+      btn.style.border = "none";
+      btn.style.padding = "12px 25px";
+      btn.style.borderRadius = "30px";
+      btn.style.fontSize = "16px";
+      btn.style.cursor = "pointer";
+      btn.style.marginBottom = "20px";
+
+      btn.onclick = () => {
+        music.play();
+        btn.remove();
+      };
+
+      document.body.prepend(btn);
     }
-  });
 
-  function showPlayButton() {
-    const btn = document.createElement("button");
-    btn.innerText = "Tap to play Raabta 🎶💖";
-    btn.style.background = "#ff8fab";
-    btn.style.color = "white";
-    btn.style.border = "none";
-    btn.style.padding = "12px 25px";
-    btn.style.borderRadius = "30px";
-    btn.style.fontSize = "16px";
-    btn.style.cursor = "pointer";
-    btn.style.marginBottom = "20px";
-
-    btn.onclick = () => {
-      music.play();
-      btn.remove();
-    };
-
-    document.body.prepend(btn);
-  }
-
-  // Floating hearts ❤️
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 300);
-</script>
+    // Floating hearts ❤️
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  </script>
 
 </body>
+
 </html>
