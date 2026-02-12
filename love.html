@@ -58,13 +58,40 @@ If forever had a feeling, it would feel like us.<br><br>
 
   <script>
   const music = document.getElementById("bgMusic");
-  const playBtn = document.getElementById("playBtn");
 
-  playBtn.addEventListener("click", () => {
-    music.play();
-    playBtn.style.display = "none";
+  // Try to play music if YES was clicked
+  window.addEventListener("load", () => {
+    const shouldPlay = sessionStorage.getItem("playMusic");
+
+    if (shouldPlay === "yes") {
+      music.play().catch(() => {
+        // fallback if browser blocks it
+        showPlayButton();
+      });
+    }
   });
 
+  function showPlayButton() {
+    const btn = document.createElement("button");
+    btn.innerText = "Tap to play Raabta 🎶💖";
+    btn.style.background = "#ff8fab";
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.padding = "12px 25px";
+    btn.style.borderRadius = "30px";
+    btn.style.fontSize = "16px";
+    btn.style.cursor = "pointer";
+    btn.style.marginBottom = "20px";
+
+    btn.onclick = () => {
+      music.play();
+      btn.remove();
+    };
+
+    document.body.prepend(btn);
+  }
+
+  // Floating hearts ❤️
   setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
