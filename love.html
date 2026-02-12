@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forever Us 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffe6f0, #fff);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+      overflow: hidden;
+    }
+    h1 {
+      color: #d63384;
+    }
+    p {
+      max-width: 600px;
+      margin: auto;
+      font-size: 18px;
+      color: #444;
+    }
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      color: pink;
+      font-size: 20px;
+      animation: float 6s infinite;
+    }
+    @keyframes float {
+      0% {transform: translateY(0); opacity: 1;}
+      100% {transform: translateY(-100vh); opacity: 0;}
+    }
+  </style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="raabta.mp3" type="audio/mpeg">
+</audio>
+
+<h1>My Love ❤️</h1>
+
+<p>
+Six years ago, I didn’t know that choosing you would mean choosing home.<br><br>
+Somewhere between our laughter, our silly fights, and quiet moments,
+you became my safest place.<br><br>
+
+Gachudi, with you love feels soft, playful, happy and warm.
+Even on ordinary days, you make life feel special.<br><br>
+
+If forever had a feeling, it would feel like us.<br><br>
+
+<b>Will you be my Valentine — forever and always? 💖</b>
+</p>
+
+<script>
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+</script>
+
+</body>
+</html>
